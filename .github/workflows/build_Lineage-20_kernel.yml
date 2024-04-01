@@ -23,10 +23,6 @@ jobs:
           java -agentlib:native-image-agent=config-output-dir=./ -jar APKEditor-1.3.6.jar --version
         continue-on-error: true
 
-      - name: Build binary
-        run: |
-          native-image -H:ReflectionConfigurationFiles=./*.json -jar ./APKEditor-1.3.6.jar com.reandroid.apkeditor.Main
-
       - name: Upload AnyKernel3
         uses: actions/upload-artifact@v3
         with:
