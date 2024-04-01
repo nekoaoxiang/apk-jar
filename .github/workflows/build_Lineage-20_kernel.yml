@@ -20,7 +20,7 @@ jobs:
 
       - name: Generate configuration file
         run: |
-          java -agentlib:native-image-agent=config-output-dir=./ -jar APKEditor-1.3.6.jar
+          java -agentlib:native-image-agent=config-output-dir=./ -jar APKEditor-1.3.6.jar --version
 
       - name: Build binary
         run: |
