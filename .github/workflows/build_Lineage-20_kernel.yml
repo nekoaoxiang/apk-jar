@@ -1,0 +1,26 @@
+name: Build jar file as binary
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: graalvm/setup-graalvm@v1
+        with:
+          java-version: '21'      # See 'Options' section below for all supported versions
+          distribution: 'graalvm' # See 'Options' section below for all available distributions
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build binary
+        run: |
+          wget https://github.com/REAndroid/APKEditor/releases/download/V1.3.6/APKEditor-1.3.6.jar
+          native-image -jar ./APKEditor-1.3.6.jar APKEditor
+
+      - name: Upload AnyKernel3
+        uses: actions/upload-artifact@v3
+        with:
+          name: APKEditor
+          path: ./APKEditor
