@@ -20,7 +20,7 @@ jobs:
 
       - name: Build binary
         run: |
-          native-image -H:ReflectionConfigurationFiles=./*.json -jar ./APKEditor-1.3.6.jar com.reandroid.apkeditor.Main
+          native-image -jar ./APKEditor-1.3.6.jar com.reandroid.apkeditor.Main
 
       - name: Upload AnyKernel3
         uses: actions/upload-artifact@v3
